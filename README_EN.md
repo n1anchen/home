@@ -60,14 +60,6 @@ pnpm build
 
 > Once the build is complete, the files in the `dist` folder can be uploaded to the server or imported and automatically deployed with one click using a hosting platform such as `Vercel`.
 
-### Weather
-
-Weather and area access requires `高德开放平台` related API
-
-- Go to [高德开放平台控制台](https://console.amap.com/dev/index) to create a `Key` of type `Web Service` and fill the `Key` into `VITE_WEATHER_KEY` in `.env` 
-
-It can also be replaced by other methods
-
 ### Music
 
 >This project uses the `Aplayer` music player based on `MetingJS` for quick song list customization  
