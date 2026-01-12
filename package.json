@@ -11,7 +11,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "format": "prettier --write src/",
-    "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts,.vue --fix"
+    "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts,.vue --fix",
+    "compress-fonts": "node scripts/font-compress.js"
   },
   "dependencies": {
     "@worstone/vue-aplayer": "^1.0.6",
@@ -33,6 +34,7 @@
     "@vitejs/plugin-vue": "^4.6.2",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.25.0",
+    "fontmin": "^1.1.1",
     "prettier": "^3.2.5",
     "sass": "^1.75.0",
     "terser": "^5.30.4",

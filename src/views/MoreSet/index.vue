@@ -63,7 +63,7 @@ const closeShow = ref(false);
 // 站点链接
 const siteUrl = computed(() => {
   const url = import.meta.env.VITE_SITE_URL;
-  if (!url) return "imsyy.top".split(".");
+  if (!url) return "nianchen.top".split(".");
   // 判断协议前缀
   if (url.startsWith("http://") || url.startsWith("https://")) {
     const urlFormat = url.replace(/^(https?:\/\/)/, "");
@@ -138,7 +138,7 @@ const jumpTo = (url) => {
         height: 260px;
         min-height: 140px;
         .bg {
-          font-size: 5rem;
+          font-size: 4rem;
         }
 
         .sm {
