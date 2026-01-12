@@ -19,7 +19,7 @@ body {
   padding: 0;
   background-color: #333;
   overflow: hidden;
-  font-family: "HarmonyOS_Regular", sans-serif;
+  font-family: "LXGWWenKaiMono-Regular", sans-serif;
 }
 
 *,
@@ -54,6 +54,12 @@ a:hover {
   font-family: "UnidreamLED";
   font-display: swap;
   src: url("/font/compressed/UnidreamLED.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "LXGWWenKaiMono-Regular";
+  font-display: swap;
+  src: url("/font/compressed/LXGWWenKaiMono-Regular.woff2") format("woff2");
 }
 
 // 基础样式

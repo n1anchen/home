@@ -115,13 +115,90 @@ function collectTextFromProject() {
       }
     });
 
-    // 移除重复的文字
-    text = [...new Set(text)].join('');
-    console.log(`\n已从项目中收集 ${text.length} 个不同的文字符\n`);
+    console.log(`✓ 从 src 目录中收集了文字`);
   } catch (e) {
     console.warn('收集项目文字失败，使用默认文字:', e.message);
   }
 
+  return text;
+}
+
+/**
+ * 从 socialLinks.json 文件中收集文字
+ */
+function collectTextFromSocialLinks() {
+  let text = '';
+  try {
+    const socialLinksPath = path.join(__dirname, '../src/assets/socialLinks.json');
+    if (fs.existsSync(socialLinksPath)) {
+      const content = fs.readFileSync(socialLinksPath, 'utf-8');
+      const data = JSON.parse(content);
+      if (Array.isArray(data)) {
+        data.forEach((item) => {
+          if (item.name) text += item.name;
+          if (item.tip) text += item.tip;
+          if (item.url) text += item.url;
+        });
+      }
+      console.log(`✓ 从 socialLinks.json 中收集了文字`);
+    }
+  } catch (e) {
+    console.warn('收集 socialLinks.json 文字失败:', e.message);
+  }
+  return text;
+}
+
+/**
+ * 从 .env 文件中收集文字
+ */
+function collectTextFromEnv() {
+  let text = '';
+  try {
+    const envPath = path.join(__dirname, '../.env');
+    if (fs.existsSync(envPath)) {
+      const content = fs.readFileSync(envPath, 'utf-8');
+      // 提取 = 后面的值
+      const lines = content.split('\n');
+      lines.forEach((line) => {
+        // 匹配 KEY = "value" 或 KEY = value 格式
+        const match = line.match(/=\s*(?:"([^"]*?)"|([^#]*?))\s*(?:#|$)/);
+        if (match) {
+          const value = match[1] || match[2];
+          if (value && value.trim()) {
+            text += value.trim();
+          }
+        }
+      });
+      console.log(`✓ 从 .env 文件中收集了文字`);
+    }
+  } catch (e) {
+    console.warn('收集 .env 文件文字失败:', e.message);
+  }
+  return text;
+}
+
+/**
+ * 从 siteLinks.json 文件中收集文字
+ */
+function collectTextFromSiteLinks() {
+  let text = '';
+  try {
+    const siteLinksPath = path.join(__dirname, '../src/assets/siteLinks.json');
+    if (fs.existsSync(siteLinksPath)) {
+      const content = fs.readFileSync(siteLinksPath, 'utf-8');
+      const data = JSON.parse(content);
+      if (Array.isArray(data)) {
+        data.forEach((item) => {
+          if (item.name) text += item.name;
+          if (item.icon) text += item.icon;
+          if (item.link) text += item.link;
+        });
+      }
+      console.log(`✓ 从 siteLinks.json 中收集了文字`);
+    }
+  } catch (e) {
+    console.warn('收集 siteLinks.json 文字失败:', e.message);
+  }
   return text;
 }
 
@@ -131,11 +208,20 @@ function collectTextFromProject() {
 async function main() {
   console.log('====================================');
   console.log('   开始压缩字体文件 (TTF → WOFF2)   ');
-  console.log('====================================');
+  console.log('====================================\n');
 
   try {
     // 收集项目中的文字
-    const text = collectTextFromProject();
+    console.log('正在收集文字...\n');
+    let text = defaultText;
+    text += collectTextFromProject();
+    text += collectTextFromSocialLinks();
+    text += collectTextFromSiteLinks();
+    text += collectTextFromEnv();
+
+    // 移除重复的文字
+    text = [...new Set(text)].join('');
+    console.log(`\n已从各个源中收集 ${text.length} 个不同的文字符\n`);
 
     // 获取所有 TTF 文件
     const ttfFiles = fs.readdirSync(fontSourceDir)
