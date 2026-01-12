@@ -149,6 +149,30 @@ function collectTextFromSocialLinks() {
 }
 
 /**
+ * 从一言 JSON 文件中收集文字
+ */
+function collectTextFromHitokoto() {
+  let text = '';
+  try {
+    const hitokotoPath = path.join(__dirname, '../public/hitokoto-data.json');
+    if (fs.existsSync(hitokotoPath)) {
+      const content = fs.readFileSync(hitokotoPath, 'utf-8');
+      const data = JSON.parse(content);
+      if (Array.isArray(data)) {
+        data.forEach((item) => {
+          if (item.text) text += item.text;
+          if (item.from) text += item.from;
+        });
+      }
+      console.log(`✓ 从一言数据中收集了文字`);
+    }
+  } catch (e) {
+    console.warn('收集一言数据文字失败:', e.message);
+  }
+  return text;
+}
+
+/**
  * 从 .env 文件中收集文字
  */
 function collectTextFromEnv() {
@@ -215,6 +239,7 @@ async function main() {
     console.log('正在收集文字...\n');
     let text = defaultText;
     text += collectTextFromProject();
+    text += collectTextFromHitokoto();
     text += collectTextFromSocialLinks();
     text += collectTextFromSiteLinks();
     text += collectTextFromEnv();

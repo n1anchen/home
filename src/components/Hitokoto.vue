@@ -31,7 +31,6 @@
 import { MusicMenu, Error } from "@icon-park/vue-next";
 import { getHitokoto } from "@/api";
 import { mainStore } from "@/store";
-import debounce from "@/utils/debounce.js";
 
 const store = mainStore();
 
@@ -48,7 +47,7 @@ const hitokotoData = reactive({
 const getHitokotoData = async () => {
   try {
     const result = await getHitokoto();
-    hitokotoData.text = result.hitokoto;
+    hitokotoData.text = result.text;
     hitokotoData.from = result.from;
   } catch (error) {
     ElMessage({
@@ -63,12 +62,9 @@ const getHitokotoData = async () => {
   }
 };
 
-// 更新一言数据
+// 更新一言数据 - 点击时获取随机的一言
 const updateHitokoto = () => {
-  // 防抖
-  debounce(() => {
-    getHitokotoData();
-  }, 500);
+  getHitokotoData();
 };
 
 onMounted(() => {

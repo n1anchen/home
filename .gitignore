@@ -26,3 +26,7 @@ dist-ssr
 
 # Fonts compressed output
 public/font/compressed/*
+
+# Hitokoto
+public/hitokoto/*.json
+public/hitokoto-data.json

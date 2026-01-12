@@ -12,7 +12,8 @@
     "preview": "vite preview",
     "format": "prettier --write src/",
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts,.vue --fix",
-    "compress-fonts": "node scripts/font-compress.js"
+    "compress-fonts": "node scripts/font-compress.js",
+    "hitokoto-fetch": "node scripts/hitokoto-fetch.js"
   },
   "dependencies": {
     "@worstone/vue-aplayer": "^1.0.6",

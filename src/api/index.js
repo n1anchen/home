@@ -43,10 +43,31 @@ export const getPlayerList = async (server, type, id) => {
  * 一言
  */
 
-// 获取一言数据
+// 从本地 JSON 中获取一言数据
+let hitokotoCache = null;
+
 export const getHitokoto = async () => {
-  const res = await fetch("https://v1.hitokoto.cn");
-  return await res.json();
+  // 使用缓存避免重复加载
+  if (hitokotoCache && hitokotoCache.length > 0) {
+    const randomIndex = Math.floor(Math.random() * hitokotoCache.length);
+    return hitokotoCache[randomIndex];
+  }
+
+  try {
+    const res = await fetch("/hitokoto-data.json");
+    const data = await res.json();
+    hitokotoCache = data;
+    
+    if (data.length > 0) {
+      const randomIndex = Math.floor(Math.random() * data.length);
+      return data[randomIndex];
+    } else {
+      throw new Error("一言数据为空");
+    }
+  } catch (error) {
+    console.error("获取一言数据失败:", error);
+    throw error;
+  }
 };
 
 
