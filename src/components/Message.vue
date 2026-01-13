@@ -3,7 +3,7 @@
   <div class="message">
     <!-- Logo -->
     <div class="logo">
-      <img class="logo-img" :src="siteLogo" alt="logo" />
+      <img class="logo-img" :class="{ rotating: isRotating }" :src="siteLogo" alt="logo" @click="rotateLogo" />
       <div :class="{ name: true, 'text-hidden': true, long: siteUrl[0].length >= 6 }">
         <span class="bg">{{ siteUrl[0] }}</span>
         <span class="sm">.{{ siteUrl[1] }}</span>
@@ -35,6 +35,18 @@ import { QuoteLeft, QuoteRight } from "@vicons/fa";
 import { Error } from "@icon-park/vue-next";
 import { mainStore } from "@/store";
 const store = mainStore();
+
+// logo 旋转状态
+const isRotating = ref(false);
+
+// 旋转 logo
+const rotateLogo = () => {
+  if (isRotating.value) return; // 防止连续点击
+  isRotating.value = true;
+  setTimeout(() => {
+    isRotating.value = false;
+  }, 1000);
+};
 
 // 主页站点logo
 const siteLogo = import.meta.env.VITE_SITE_MAIN_LOGO;
@@ -97,7 +109,17 @@ watch(
     max-width: 460px;
     .logo-img {
       border-radius: 50%;
-      width: 120px;
+      width: 100px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+
+      &.rotating {
+        animation: spin 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
     .name {
       width: 100%;
@@ -119,7 +141,7 @@ watch(
     }
     @media (max-width: 768px) {
       .logo-img {
-        width: 100px;
+        width: 80px;
       }
       .name {
         height: 128px;
@@ -189,5 +211,14 @@ watch(
   //     margin-top: 2.5rem;
   //   }
   // }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>
