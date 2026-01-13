@@ -15,7 +15,7 @@ export default function viteFontCompressPlugin(options = {}) {
     enforce: 'pre',
 
     async configResolved(config) {
-      this.config = config;
+      // 接收配置，但无需存储
     },
 
     async buildStart() {
