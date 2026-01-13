@@ -1,10 +1,10 @@
 {
   "name": "home",
-  "author": "imsyy",
-  "github": "https://github.com/imsyy/home",
-  "home": "https://imsyy.top",
+  "author": "n1anchen",
+  "github": "https://github.com/n1anchen/home",
+  "home": "https://n1anchen.top",
   "private": true,
-  "version": "4.1.4",
+  "version": "4.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
