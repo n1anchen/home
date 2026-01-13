@@ -6,7 +6,7 @@ import { VitePWA } from "vite-plugin-pwa";
 import vue from "@vitejs/plugin-vue";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
-import viteCompression from "vite-plugin-compression";
+// import viteCompression from "vite-plugin-compression";
 import viteFontCompress from "./scripts/vite-plugin-font-compress.js";
 
 // https://vitejs.dev/config/
@@ -91,7 +91,7 @@ export default ({ mode }) =>
           ],
         },
       }),
-      viteCompression(),
+      // viteCompression(),
     ],
     server: {
       port: "3000",
