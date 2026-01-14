@@ -22,9 +22,13 @@
         </span>
         <!-- 站点备案 -->
         <span>
-          &amp;
+          <span v-if="siteIcp"> &amp; </span>
           <a v-if="siteIcp" href="https://beian.miit.gov.cn" target="_blank">
             {{ siteIcp }}
+          </a>
+          <span v-if="sitePrc"> &amp; </span>
+          <a v-if="sitePrc" :href="`https://beian.mps.gov.cn/#/query/webSearch?polnm=${sitePrc}`" target="_blank">
+            {{ sitePrc }}
           </a>
         </span>
       </div>
@@ -56,6 +60,7 @@ const startYear = ref(
   import.meta.env.VITE_SITE_START.substring(0, 4) : null
 );
 const siteIcp = ref(import.meta.env.VITE_SITE_ICP);
+const sitePrc = ref(import.meta.env.VITE_SITE_PRC);
 const siteAuthor = ref(import.meta.env.VITE_SITE_AUTHOR);
 const siteUrl = computed(() => {
   const url = import.meta.env.VITE_SITE_URL;
@@ -118,17 +123,24 @@ const siteUrl = computed(() => {
   }
   @media (max-width: 720px) {
     font-size: 0.9rem;
+    height: auto;
+    line-height: 1.5;
+    white-space: normal;
     &.blur {
       font-size: 0.9rem;
+    }
+    .power {
+      display: flex;
+      flex-direction: column;
+      span {
+        &:last-child {
+          margin-top: 5px;
+        }
+      }
     }
   }
   @media (max-width: 560px) {
     .c-hidden {
-      display: none;
-    }
-  }
-  @media (max-width: 480px) {
-    .hidden {
       display: none;
     }
   }
