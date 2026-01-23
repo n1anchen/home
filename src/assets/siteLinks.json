@@ -5,14 +5,14 @@
     "link": "https://note.nianchen.top/"
   },
   {
+    "icon": "Tools",
+    "name": "工具站",
+    "link": "https://tools.nianchen.top/"
+  },
+  {
     "icon": "Cloud",
     "name": "网盘",
     "link": "https://pan.nianchen.top/"
-  },
-  {
-    "icon": "Compass",
-    "name": "起始页",
-    "link": "https://nav.nianchen.top/"
   },
   {
     "icon": "Book",
