@@ -204,7 +204,7 @@ defineExpose({ playToggle, changeVolume, changeSong, toggleList });
 .aplayer {
   width: 80%;
   border-radius: 6px;
-  font-family: "LXGWWenKaiMono-Regular", sans-serif !important;
+  font-family: "LXGW WenKai Screen", sans-serif !important;
   :deep(.aplayer-body) {
     background-color: transparent;
     .aplayer-pic {
