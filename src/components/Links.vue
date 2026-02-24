@@ -43,7 +43,8 @@
 <script setup>
 import { Icon } from "@vicons/utils";
 // 可前往 https://www.xicons.org 自行挑选并在此处引入
-import { Link, PencilAlt, CompactDisc, Cloud, Tools, Book, Fire, LaptopCode, Code } from "@vicons/fa"; // 注意使用正确的类别
+// 似乎无法访问，可用 https://xicons.nianchen.top 替代，或直接使用 Font Awesome 的图标库
+import { Link, PencilAlt, CompactDisc, CloudDownloadAlt, Tools, Book, Fire, LaptopCode, Code, FileArchive } from "@vicons/fa"; // 注意使用正确的类别
 import { mainStore } from "@/store";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination, Mousewheel } from "swiper/modules";
@@ -64,13 +65,14 @@ const siteLinksList = computed(() => {
 // 网站链接图标
 const siteIcon = {
   PencilAlt,
-  Cloud,
+  CloudDownloadAlt,
   CompactDisc,
   Tools,
   Book,
   Fire,
   LaptopCode,
   Code,
+  FileArchive,
 };
 
 // 链接跳转

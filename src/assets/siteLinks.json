@@ -6,23 +6,23 @@
   },
   {
     "icon": "Tools",
-    "name": "工具站",
+    "name": "工具集",
     "link": "https://tools.nianchen.top/"
   },
   {
-    "icon": "Cloud",
+    "icon": "CloudDownloadAlt",
     "name": "网盘",
     "link": "https://pan.nianchen.top/"
   },
   {
-    "icon": "Book",
-    "name": "网址集",
-    "link": "/"
+    "icon": "FileArchive",
+    "name": "存储",
+    "link": "https://disk.nianchen.top/"
   },
   {
     "icon": "LaptopCode",
     "name": "站点监测",
-    "link": "https://status.nianchen.top/"
+    "link": "https://umami.nianchen.top/"
   },
   {
     "icon": "Code",
